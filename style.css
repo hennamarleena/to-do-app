@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    background-color: #eee9fb;
+    background-image: linear-gradient(to right top, #ffe0ee, #eec6e3, #e1c3e9, #c9bedf);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Lexend", serif;
+    margin-bottom: 20px;
+    font-size: 2.8em;
+    color: #9a80dd;
+    letter-spacing: 0.5ch;
+}
+
+#container {
+    background-color: white;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 5vh;
+    padding: 3em 2em;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px 0px rgba(167, 167, 167, 0.684);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+#container #flex {
+    display: flex;
+    gap: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+#task_input {
+    flex: 90%;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 20px;
+    border-radius:  10px 0 0 10px;
+    border: 1.5px solid #baa6ee;
+    font-family: "Lexend", serif;
+}
+
+#add_btn {
+    padding: 5px 20px;
+    border-radius:  0 10px 10px 0;
+    font-size: 15px;
+    background-color: #baa6ee;
+    border: 0;
+    color: white;
+    font-family: "Lexend", serif;
+    cursor: pointer;
+    flex: 10%;
+    box-shadow: 0px 5px 5px 0px rgba(240, 240, 240, 0.684);
+
+}
+
+#add_btn:hover {
+    background-color: #d4c3fe;
+}
+
+#tasks_container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#delete_all_btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #baa6ee;
+    color: white;
+    border: 0;
+    font-family: "Lexend", serif;
+    cursor: pointer;
+    box-shadow: 0px 5px 5px 0px rgba(240, 240, 240, 0.684);
+
+}
+
+#delete_all_btn:hover {
+    background-color: #e2d7ff;   
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    border-radius: 10px;
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.task-left-side {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.task-right-side {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-text {
+    font-size: 15px;
+    font-family: "Lexend";
+}
+
+.delete-btn {
+    height: 30px;
+    width: 30px;
+    border: 0;
+    border-radius: 5px;
+    background: #f2f2f2;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #d0bdff;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    width: 45px;
+    font-family: "Lexend";
+    background: #e8e8e8;
+    border: 0;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: rgb(178, 245, 178);
+}
+
+.editinput {
+    padding: 2px;
+    font-family: "Lexend";
+    font-size: 15px;
+
+}
+
+.saveUpdatedBtn {
+    width: 45px;
+    margin-left: 5px;
+    font-family: "Lexend";
+    background: #e8e8e8;
+    border: 0;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
