@@ -3,15 +3,14 @@
 ![screenshot](screenshot.jpg)
 
 ## About the project
-Basic to do -app with vanilla Javascript
+Simple To-Do app built with Javascript, HTML and CSS
 
-## Features (coming up):
-- adding a new task and deleting it
-- editing the task
-- saving data to storage
-- sorting the tasks by dragging them
+## Features
+✅ Add new tasks
+✅ Delete tasks: remove individual tasks or clear the entire list at once
+✅ Edit tasks with an inline editing feature
+✅ Mark tasks as complete
+✅ Tasks are saved in the browser's local storage and automatically loaded when you revisit the app
 
-**Right now working:**
-- adding and deleting a new task ✔️
-- editing the task text ✔️
-
+## Future enhancements
+-  Add drag-and-drop functionality to organize tasks
