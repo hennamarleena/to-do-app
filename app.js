@@ -1,129 +1,129 @@
-const add = document.getElementById("add_btn");
-let task_input = document.getElementById("task_input");
-const deleteAll = document.getElementById("delete_all_btn") 
-const tasksContainer = document.getElementById("tasks_container");
-let todos = JSON.parse(localStorage.getItem("todos")) || [];
+const addTaskButton = document.getElementById("addTaskButton");
+let taskInput = document.getElementById("taskInput");
+const deleteAllButton = document.getElementById("deleteAllButton") 
+const taskList = document.getElementById("taskList");
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-function toggleDeleteAllButton() {
-    if (tasksContainer.children.length === 0) {
-        deleteAll.style.display = "none";
+function toggleDeleteAllVisibility() {
+    if (taskList.children.length === 0) {
+        deleteAllButton.style.display = "none";
     } else {
-        deleteAll.style.display = "block";
+        deleteAllButton.style.display = "block";
     }
 }
 
-function addTaskToList() {
-    if (task_input.value.trim() !== "") {
-    const newTodo = {
-        text: task_input.value,
-        id: Math.floor(Math.random() * 999),
+function addTask() {
+    if (taskInput.value.trim() !== "") {
+    const task = {
+        text: taskInput.value,
+        id: Date.now(),
         };
-        todos.push(newTodo);
-        localStorage.setItem("todos", JSON.stringify(todos));
-        renderTaskList();
-        task_input.value = "";
+        tasks.push(task);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        updateTaskList();
+        taskInput.value = "";
     } else {
         alert("Task cannot be empty!")
     }
 }
 
-function renderTaskList() {
-    tasksContainer.innerHTML = "";
-    todos.forEach((todo, index) => {
+function updateTaskList() {
+    taskList.innerHTML = "";
+    tasks.forEach((task, index) => {
     
-    const newTask = document.createElement("li");
-    newTask.draggable = true;
-    newTask.classList.add("task");
+    const taskElement  = document.createElement("li");
+    taskElement.classList.add("taskItem");
 
-    const taskLeftSide = document.createElement("div");
-    taskLeftSide.classList.add("task-left-side");
+    const taskItemLeft = document.createElement("div");
+    taskItemLeft.classList.add("taskItemLeft");
 
-    const taskRightSide = document.createElement("div");
-    taskRightSide.classList.add("task-right-side");
+    const taskItemRight = document.createElement("div");
+    taskItemRight.classList.add("taskItemRight");
 
-    const newTaskText = document.createElement("span");
-    newTaskText.textContent = todo.text;
-    newTaskText.classList.add("task-text");
+    const taskTextElement = document.createElement("span");
+    taskTextElement.textContent = task.text;
+    taskTextElement.classList.add("taskText");
 
-    const checkbox = document.createElement("input");
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.classList.add("checkbox");
+    const taskCheckbox = document.createElement("input");
+    taskCheckbox.setAttribute("type", "checkbox");
+    taskCheckbox.classList.add("taskCheckbox");
     
-    checkbox.onchange = () => {
-        if (checkbox.checked) {
-            newTaskText.style.textDecoration = "line-through";
-            newTaskText.style.color = "grey";
+    taskCheckbox.onchange = () => {
+        if (taskCheckbox.checked) {
+            taskTextElement.style.textDecoration = "line-through";
+            taskTextElement.style.color = "grey";
         } else {
-            newTaskText.style.textDecoration = "none";
-            newTaskText.style.color = "black";
+            taskTextElement.style.textDecoration = "none";
+            taskTextElement.style.color = "black";
         }
     };
 
-    const editBtn = document.createElement("button");
-    editBtn.classList.add("edit-btn");
-    editBtn.innerHTML = "Edit";
+    const editButton = document.createElement("button");
+    editButton.classList.add("editButton");
+    editButton.innerHTML = "Edit";
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.innerHTML = "✖️";
-    deleteBtn.classList.add("delete-btn");
+    const deleteTaskButton = document.createElement("button");
+    deleteTaskButton.innerHTML = "✖️";
+    deleteTaskButton.classList.add("deleteTaskButton");
 
-    deleteBtn.addEventListener("click", () => {
-        todos.splice(index, 1);
-        localStorage.setItem("todos", JSON.stringify(todos));
-        renderTaskList();
+    deleteTaskButton.addEventListener("click", () => {
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        updateTaskList();
     });
 
-    taskLeftSide.appendChild(checkbox);
-    taskLeftSide.appendChild(newTaskText);
-    taskRightSide.appendChild(editBtn)
-    taskRightSide.appendChild(deleteBtn);
-    newTask.appendChild(taskLeftSide);
-    newTask.appendChild(taskRightSide);
-    tasksContainer.appendChild(newTask);
+    taskItemLeft.appendChild(taskCheckbox);
+    taskItemLeft.appendChild(taskTextElement);
+    taskItemRight.appendChild(editButton)
+    taskItemRight.appendChild(deleteTaskButton);
+    taskElement.appendChild(taskItemLeft);
+    taskElement.appendChild(taskItemRight);
+    taskList.appendChild(taskElement);
 
-    editBtn.addEventListener("click", () => {
-        if (newTaskText.querySelector("input.editinput")) {
+    editButton.addEventListener("click", () => {
+        if (taskTextElement.querySelector("input.editinput")) {
             return;
         }
         const editInput = document.createElement("input");
-        editInput.classList.add("editinput");
-        editInput.value = todo.text;
+        editInput.classList.add("editInput");
+        editInput.value = task.text;
 
-        newTaskText.textContent = "";
-        newTaskText.appendChild(editInput);
+        taskTextElement.textContent = "";
+        taskTextElement.appendChild(editInput);
     
-        const saveUpdatedBtn = document.createElement("button");
-        saveUpdatedBtn.classList.add("saveUpdatedBtn");
-        saveUpdatedBtn.textContent = "Save";
+        const saveButton = document.createElement("button");
+        saveButton.classList.add("saveButton");
+        saveButton.textContent = "Save";
     
-        saveUpdatedBtn.addEventListener("click", () => {
+        saveButton.addEventListener("click", () => {
             if (editInput.value.trim() !== "") {
-                newTaskText.textContent = editInput.value;
-                todos[index].text = editInput.value.trim();
-                localStorage.setItem("todos", JSON.stringify(todos));
-                renderTaskList();
+                taskTextElement.textContent = editInput.value;
+                tasks[index].text = editInput.value.trim();
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                updateTaskList();
             } else {
                 alert("Error, task cannot be empty")
             }
         });
-        newTaskText.appendChild(saveUpdatedBtn);
+        taskTextElement.appendChild(saveButton);
         });
     });
-    toggleDeleteAllButton();
+    toggleDeleteAllVisibility();
 }
 
-add.addEventListener("click", addTaskToList);
+addTaskButton.addEventListener("click", addTask);
 
-deleteAll.addEventListener("click", () => {
-    todos = [];
-    localStorage.setItem("todos", JSON.stringify(todos));
-    renderTaskList();
+deleteAllButton.addEventListener("click", () => {
+    tasks = [];
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    updateTaskList();
 });
 
-task_input.addEventListener("keypress", function(e) {
+taskInput.addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
-        addTaskToList();
+        addTask();
     }
 })
 
-renderTaskList();
+
+updateTaskList();

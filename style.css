@@ -38,7 +38,7 @@ h1 {
 }
 
 
-#container #flex {
+#taskInputWrapper {
     display: flex;
     gap: 0px;
     margin-bottom: 20px;
@@ -47,7 +47,7 @@ h1 {
 }
 
 
-#task_input {
+#taskInput {
     flex: 90%;
     padding: 8px;
     font-size: 20px;
@@ -57,7 +57,7 @@ h1 {
     font-family: "Lexend", serif;
 }
 
-#add_btn {
+#addTaskButton {
     padding: 5px 20px;
     border-radius:  0 10px 10px 0;
     font-size: 15px;
@@ -71,11 +71,11 @@ h1 {
 
 }
 
-#add_btn:hover {
+#addTaskButton:hover {
     background-color: #d4c3fe;
 }
 
-#tasks_container {
+#taskList {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
@@ -83,7 +83,7 @@ h1 {
     box-sizing: border-box;
 }
 
-#delete_all_btn {
+#deleteAllButton {
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 15px;
@@ -96,11 +96,11 @@ h1 {
 
 }
 
-#delete_all_btn:hover {
+#deleteAllButton:hover {
     background-color: #e2d7ff;   
 }
 
-.task {
+.taskItem {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -111,25 +111,24 @@ h1 {
     margin-bottom: 10px;
 }
 
-.task-left-side {
+.taskItemLeft {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-
-.task-right-side {
+.taskItemRight {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.task-text {
+.taskText {
     font-size: 15px;
     font-family: "Lexend";
 }
 
-.delete-btn {
+.deleteTaskButton {
     height: 30px;
     width: 30px;
     border: 0;
@@ -138,17 +137,17 @@ h1 {
     cursor: pointer;
 }
 
-.delete-btn:hover {
+.deleteTaskButton:hover {
     background-color: #d0bdff;
 }
 
-.checkbox {
+.taskCheckbox {
     width: 20px;
     height: 20px;
     cursor: pointer;
 }
 
-.edit-btn {
+.editButton {
     width: 45px;
     font-family: "Lexend";
     background: #e8e8e8;
@@ -158,18 +157,17 @@ h1 {
     cursor: pointer;
 }
 
-.edit-btn:hover {
+.editButton:hover {
     background-color: rgb(178, 245, 178);
 }
 
-.editinput {
+.editInput {
     padding: 2px;
     font-family: "Lexend";
     font-size: 15px;
-
 }
 
-.saveUpdatedBtn {
+.saveButton {
     width: 45px;
     margin-left: 5px;
     font-family: "Lexend";
@@ -178,4 +176,18 @@ h1 {
     height: 30px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+@media (max-width: 600px) {
+    #container {
+        width: 80%;
+        padding: 2em 1em;
+    }
+    #taskInput {
+        font-size: 16px;
+    }
+    .taskText {
+        font-size: 14px;
+    }
 }
